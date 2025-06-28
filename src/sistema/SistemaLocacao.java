@@ -87,8 +87,12 @@ public class SistemaLocacao {
         System.out.println("\n=== CRIAR PERFIL ===");
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
+        System.out.print("Sobrenome: ");
+        String sobrenome = scanner.nextLine();
         System.out.print("Email: ");
         String email = scanner.nextLine();
+        System.out.println("Senha");
+        String senha = scanner.nextLine();
         System.out.print("Telefone: ");
         String telefone = scanner.nextLine();
         
@@ -100,7 +104,7 @@ public class SistemaLocacao {
             }
         }
         
-        Perfil novoUsuario = new Perfil(nome, email, telefone);
+        Perfil novoUsuario = new Perfil(email, senha, nome, sobrenome);
         usuarios.add(novoUsuario);
         System.out.println("Perfil criado com sucesso!");
         System.out.println("Use seu telefone como senha para fazer login.");
@@ -388,9 +392,9 @@ public class SistemaLocacao {
     
     private static void inicializarDadosExemplo() {
         // Criar usuários de exemplo
-        Perfil joao = new Perfil("João Silva", "joao@email.com", "123");
-        Perfil maria = new Perfil("Maria Santos", "maria@email.com", "456");
-        Perfil carlos = new Perfil("Carlos Oliveira", "carlos@email.com", "789");
+        Perfil joao = new Perfil("joao@email.com", "123", "João", "Silva", );
+        Perfil maria = new Perfil("maria@email.com", "456", "Maria", "Santos");
+        Perfil carlos = new Perfil("carlos@email.com", "789", "Carlos", "Oliveira");
         
         usuarios.add(joao);
         usuarios.add(maria);

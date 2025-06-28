@@ -1,6 +1,8 @@
 package perfil;
 
 import java.util.ArrayList;
+import perfil.Genero;
+import locais.Local;
 
 public class Perfil {
     ArrayList<Local> propriedades = new ArrayList<Local>();
@@ -21,7 +23,7 @@ public class Perfil {
         this.genero = PREFIRONAORESPONDER;
     }
 
-    public alteraPerfil(String nome, String sobrenome, Local casa, int valGenero, String descricao){
+    public void alteraPerfil(String nome, String sobrenome, Local casa, int valGenero, String descricao){
         setNome(nome);
         setSobrenome(sobrenome);
         setCasa(casa);
@@ -29,16 +31,16 @@ public class Perfil {
         setDescricao(descricao);
     }
 
-    public alteraConfiguracao(String senha, String login){
+    public void alteraConfiguracao(String senha, String login){
         this.senha = senha;
         this.login = login;
     }
 
-    public adicionaContato(String contato){
-        contato.add(contato);
+    public void adicionaContato(String contato){
+        this.contato.add(contato);
     }
 
-    public removerContato(int posicao){
+    public void removerContato(int posicao){
         contato.remove(posicao);
     }
 
@@ -72,15 +74,23 @@ public class Perfil {
         return this.login;
     }
 
-    public setNome(String nome){
+    public String getTelefone(){
+        return this.contato.get(0);
+    }
+
+    public String getEmail(){
+        return this.contato.get(1);
+    }
+
+    public void setNome(String nome){
         this.nome = nome;
     }
 
-    public setSobrenome(String sobrenome){
+    public void setSobrenome(String sobrenome){
         this.sobrenome = sobrenome;
     }
 
-    public setGenero(int valGenero){
+    public void setGenero(int valGenero){
         switch (valGenero){
             case 0:
             genero = HOMEMCISGENERO;
@@ -104,19 +114,19 @@ public class Perfil {
         }
     }
 
-    public setCasa(Local casa){
+    public void setCasa(Local casa){
         this.casa = casa;
     }
 
-    public setDescricao(String descricao){
+    public void setDescricao(String descricao){
         this.descricao_pessoal = descricao;
     }
 
-    public setSenha(String senha){
+    public void setSenha(String senha){
         this.senha = senha;
     }
 
-    public setLogin(String login){
+    public void setLogin(String login){
         this.login = login;
     }
     
