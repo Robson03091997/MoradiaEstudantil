@@ -1,14 +1,13 @@
 package perfil;
 
 import java.util.ArrayList;
-import perfil.Genero;
 import locais.Local;
 
 public class Perfil {
     ArrayList<Local> propriedades = new ArrayList<Local>();
     Local casa;
     String nome;
-    Genero genero = new Genero();
+    Genero genero; //acredito que não precisa/pode instanciar como método
     String sobrenome;
     String login;
     String senha;
@@ -20,7 +19,7 @@ public class Perfil {
         this.senha = senha;
         this.nome = nome;
         this.sobrenome = sobrenome;
-        this.genero = PREFIRONAORESPONDER;
+        this.genero = Genero.PREFIRONAORESPONDER; //adicionar o "Genero." para selecionar a enumeração (feito em todas as vezes q aconteceu a msm coisa)
     }
 
     public void alteraPerfil(String nome, String sobrenome, Local casa, int valGenero, String descricao){
@@ -37,7 +36,7 @@ public class Perfil {
     }
 
     public void adicionaContato(String contato){
-        this.contato.add(contato);
+        contato.add(contato);
     }
 
     public void removerContato(int posicao){
@@ -58,7 +57,7 @@ public class Perfil {
         return this.genero;
     }
 
-    public Local getCasa(){
+    public locais.Local getCasa(){
         return this.casa;
     }
 
@@ -74,14 +73,6 @@ public class Perfil {
         return this.login;
     }
 
-    public String getTelefone(){
-        return this.contato.get(0);
-    }
-
-    public String getEmail(){
-        return this.contato.get(1);
-    }
-
     public void setNome(String nome){
         this.nome = nome;
     }
@@ -93,22 +84,22 @@ public class Perfil {
     public void setGenero(int valGenero){
         switch (valGenero){
             case 0:
-            genero = HOMEMCISGENERO;
+            genero = Genero.HOMEMCISGENERO;
             break;
             case 1:
-            genero = MULHERCISGENERO;
+            genero = Genero.MULHERCISGENERO;
             break;
             case 2:
-            genero = HOMEMTRANSGENERO;
+            genero = Genero.HOMEMTRANSGENERO;
             break;
             case 3:
-            genero = MULHERTRANSGENERO;
+            genero = Genero.MULHERTRANSGENERO;
             break;
             case 4:
-            genero = NAOBINARIO;
+            genero = Genero.NAOBINARIO;
             break;
             case 5:
-            genero = PREFIRONAORESPONDER;
+            genero = Genero.PREFIRONAORESPONDER;
             break;
 
         }
