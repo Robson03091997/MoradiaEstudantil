@@ -1,11 +1,11 @@
 package sistema;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 import locais.*;
 import perfil.Perfil;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Map;
 
 public class SistemaLocacao {
     private static Scanner scanner = new Scanner(System.in);
@@ -73,7 +73,7 @@ public class SistemaLocacao {
         
         // Simulação de login (em um sistema real seria com hash de senha)
         for (Perfil usuario : usuarios) {
-            if (usuario.getEmail().equals(email) && usuario.getTelefone().equals(senha)) {
+            if (usuario.getEmail().equals(email) && usuario.getSenha().equals(senha)) {
                 usuarioLogado = usuario;
                 System.out.println("Login realizado com sucesso!");
                 menuUsuario();
@@ -392,7 +392,7 @@ public class SistemaLocacao {
     
     private static void inicializarDadosExemplo() {
         // Criar usuários de exemplo
-        Perfil joao = new Perfil("joao@email.com", "123", "João", "Silva", );
+        Perfil joao = new Perfil("joao@email.com", "123", "João", "Silva");
         Perfil maria = new Perfil("maria@email.com", "456", "Maria", "Santos");
         Perfil carlos = new Perfil("carlos@email.com", "789", "Carlos", "Oliveira");
         

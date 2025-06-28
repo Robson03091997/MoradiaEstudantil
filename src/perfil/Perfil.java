@@ -73,6 +73,18 @@ public class Perfil {
         return this.login;
     }
 
+    public String getEmail() {
+        return this.login;
+    }
+
+    public String getTelefone() {
+        if (contato.size() > 0) {
+            return contato.get(0);
+        } else {
+            return "";
+        }
+    }
+
     public void setNome(String nome){
         this.nome = nome;
     }
