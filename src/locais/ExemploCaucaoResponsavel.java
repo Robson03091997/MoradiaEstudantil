@@ -11,7 +11,7 @@ public class ExemploCaucaoResponsavel {
         RepositorioLocais repositorio = RepositorioLocais.getInstancia();
         
         // Criar alguns perfis de exemplo
-        Perfil proprietario1 = new Perfil("João Silva", "joao@email.com", "(11) 99999-9999");
+        Perfil proprietario1 = new Perfil("João", "Silva", "joao@email.com", "(11) 99999-9999");
         Perfil proprietario2 = new Perfil("Maria Santos", "maria@email.com", "(11) 88888-8888");
         Perfil responsavel1 = new Perfil("Carlos Oliveira", "carlos@email.com", "(11) 77777-7777");
         Perfil responsavel2 = new Perfil("Ana Costa", "ana@email.com", "(11) 66666-6666");

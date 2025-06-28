@@ -35,8 +35,8 @@ public class Perfil {
         this.login = login;
     }
 
-    public void adicionaContato(String contato){
-        contato.add(contato);
+    public void adicionaContato(String novoContato){
+        contato.add(novoContato); // troquei "contato" por "novoContato" para evitar confusão com o nome da string
     }
 
     public void removerContato(int posicao){

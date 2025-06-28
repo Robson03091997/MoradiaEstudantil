@@ -48,7 +48,7 @@ public abstract class Local {
         }
     }
     
-    // Enum para formas de caução
+    // Enum para formas de caução //não deveria ser um arquivo separado???
     public enum FormaCaucao {
         FIADOR("Fiador"),
         DEPOSITO("Depósito"),
