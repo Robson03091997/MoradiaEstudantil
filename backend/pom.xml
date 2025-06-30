@@ -13,13 +13,46 @@
     <name>Sistema de Locação de Imóveis - MC322</name>
     <description>Sistema completo de locação de imóveis desenvolvido em Java</description>
 
+    <!-- Spring Boot Parent -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.14</version>
+        <relativePath/>
+    </parent>
+
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>11</java.version>
     </properties>
 
     <dependencies>
+        <!-- Spring Boot Web Starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Spring Boot Data JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- Spring Boot Security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- Spring Boot Validation -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
         <!-- SQLite JDBC Driver -->
         <dependency>
             <groupId>org.xerial</groupId>
@@ -27,11 +60,17 @@
             <version>3.42.0.0</version>
         </dependency>
 
+        <!-- PostgreSQL para produção -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
         <!-- JUnit para testes -->
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.9.2</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -61,10 +100,25 @@
             <artifactId>hibernate-validator</artifactId>
             <version>8.0.0.Final</version>
         </dependency>
+
+        <!-- CORS para frontend -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cors</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <!-- Spring Boot Maven Plugin -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>sistema.SistemaLocacaoApplication</mainClass>
+                </configuration>
+            </plugin>
+
             <!-- Compilador Java -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -98,7 +152,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>sistema.ExemploSistemaCompleto</mainClass>
+                                    <mainClass>sistema.SistemaLocacaoApplication</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
@@ -112,7 +166,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <mainClass>sistema.ExemploSistemaCompleto</mainClass>
+                    <mainClass>sistema.SistemaLocacaoApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
@@ -135,7 +189,7 @@
         <profile>
             <id>prod</id>
             <properties>
-                <db.url>jdbc:sqlite:locacao_imoveis_prod.db</db.url>
+                <db.url>jdbc:postgresql://localhost:5432/locacao_imoveis</db.url>
                 <log.level>INFO</log.level>
             </properties>
         </profile>

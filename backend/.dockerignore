@@ -1,0 +1,12 @@
+# Arquivos e pastas a serem ignorados no build do Docker
+target/
+!target/*.jar
+src/
+.git/
+.gitignore
+README.md
+*.md
+docs/
+node_modules/
+.env
+*.log 

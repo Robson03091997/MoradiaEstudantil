@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProperty } from '../contexts/PropertyContext';
 import { useAuth } from '../contexts/AuthContext';
-import { FaSave } from 'react-icons/fa';
+import { FaSave, FaCamera, FaTrash, FaUpload } from 'react-icons/fa';
 
 const AddProperty = () => {
   const { addProperty } = useProperty();
   const { user } = useAuth();
   const navigate = useNavigate();
+  const fileInputRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [imagePreview, setImagePreview] = useState(null);
+  const [imageError, setImageError] = useState('');
+  const [isDragOver, setIsDragOver] = useState(false);
 
   const [formData, setFormData] = useState({
     tipo: '',
@@ -19,6 +23,7 @@ const AddProperty = () => {
     area: '',
     maxInquilinos: 1,
     valor: '',
+    imagem: '',
     // Campos específicos por tipo
     quartos: '',
     garagem: '',
@@ -37,6 +42,75 @@ const AddProperty = () => {
     compartilhado: false,
     tipoCompartilhamento: ''
   });
+
+  const validateImage = (file) => {
+    // Validação do tipo de arquivo
+    const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+    if (!validTypes.includes(file.type)) {
+      setImageError('Por favor, selecione uma imagem nos formatos: JPG, PNG ou WebP');
+      return false;
+    }
+
+    // Validação do tamanho (máximo 5MB)
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    if (file.size > maxSize) {
+      setImageError('A imagem deve ter no máximo 5MB');
+      return false;
+    }
+
+    return true;
+  };
+
+  const processImage = (file) => {
+    if (!validateImage(file)) {
+      return;
+    }
+
+    // Criar preview
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setImagePreview(e.target.result);
+      setFormData(prev => ({ ...prev, imagem: e.target.result }));
+      setImageError('');
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      processImage(file);
+    }
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragOver(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setIsDragOver(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragOver(false);
+    
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+      processImage(files[0]);
+    }
+  };
+
+  const removeImage = () => {
+    setImagePreview(null);
+    setFormData(prev => ({ ...prev, imagem: '' }));
+    setImageError('');
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -63,6 +137,10 @@ const AddProperty = () => {
       setError('Valor deve ser maior que zero');
       return false;
     }
+    if (!formData.imagem) {
+      setError('Foto do imóvel é obrigatória');
+      return false;
+    }
     return true;
   };
 
@@ -84,6 +162,7 @@ const AddProperty = () => {
         area: parseFloat(formData.area),
         maxInquilinos: parseInt(formData.maxInquilinos),
         valor: parseFloat(formData.valor),
+        imagem: formData.imagem,
         proprietario: {
           id: user.id,
           nome: user.nome,
@@ -544,6 +623,90 @@ const AddProperty = () => {
                 </select>
               </div>
             )}
+          </div>
+
+          {/* Image Upload */}
+          <div className="card">
+            <h2 className="text-xl font-semibold mb-6">Foto do Imóvel *</h2>
+            
+            <div className="image-upload-section">
+              {!imagePreview ? (
+                <div 
+                  className={`image-upload-area ${isDragOver ? 'drag-over' : ''}`}
+                  onClick={() => fileInputRef.current?.click()} 
+                  onDragOver={handleDragOver} 
+                  onDragLeave={handleDragLeave} 
+                  onDrop={handleDrop}
+                >
+                  <div className="image-upload-content">
+                    <FaCamera className="image-upload-icon" />
+                    <h3 className="image-upload-title">
+                      {isDragOver ? 'Solte a imagem aqui' : 'Adicionar Foto'}
+                    </h3>
+                    <p className="image-upload-description">
+                      {isDragOver 
+                        ? 'Solte a imagem para fazer o upload' 
+                        : 'Clique para selecionar uma imagem ou arraste e solte aqui'
+                      }
+                    </p>
+                    <div className="image-upload-formats">
+                      Formatos aceitos: JPG, PNG, WebP (máx. 5MB)
+                    </div>
+                  </div>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/jpeg,image/jpg,image/png,image/webp"
+                    onChange={handleImageChange}
+                    className="image-upload-input"
+                  />
+                </div>
+              ) : (
+                <div className="image-preview-container">
+                  <div className="image-preview-wrapper">
+                    <img
+                      src={imagePreview}
+                      alt="Preview do imóvel"
+                      className="image-preview"
+                    />
+                    <div className="image-preview-overlay">
+                      <button
+                        type="button"
+                        onClick={removeImage}
+                        className="image-remove-button"
+                        title="Remover imagem"
+                      >
+                        <FaTrash />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="image-preview-actions">
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      className="image-change-button"
+                    >
+                      <FaUpload />
+                      Trocar Imagem
+                    </button>
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept="image/jpeg,image/jpg,image/png,image/webp"
+                      onChange={handleImageChange}
+                      className="image-upload-input"
+                    />
+                  </div>
+                </div>
+              )}
+
+              {imageError && (
+                <div className="image-error-message">
+                  <FaTrash />
+                  {imageError}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Submit */}
