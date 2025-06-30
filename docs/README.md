@@ -2,7 +2,23 @@
 
 ## 📋 Visão Geral
 
-Esta pasta contém toda a documentação do projeto Sistema de Locação de Imóveis (ProjetoMC322), incluindo guias de desenvolvimento, instruções de execução e scripts de automação.
+Esta pasta contém toda a documentação do projeto Sistema de Locação de Imóveis (ProjetoMC322), incluindo guias de desenvolvimento, instruções de execução, scripts de automação e **opções de deploy gratuito**.
+
+## 🚀 **OPÇÕES DE DEPLOY**
+
+### **🆓 GRATUITO - Netlify + Render (RECOMENDADO)**
+
+- **Custo**: $0/mês - 100% GRATUITO!
+- **Frontend**: Netlify (100GB/mês)
+- **Backend**: Render (750h/mês)
+- **Guia**: [GUIA_DEPLOY_GRATUITO.md](GUIA_DEPLOY_GRATUITO.md)
+
+### **💰 ECONÔMICO - Vercel + Railway**
+
+- **Custo**: $5/mês
+- **Frontend**: Vercel (gratuito)
+- **Backend**: Railway ($5/mês)
+- **Guia**: [GUIA_DEPLOY.md](GUIA_DEPLOY.md)
 
 ## 📁 Arquivos de Documentação
 
@@ -21,6 +37,31 @@ Este é o **guia principal** para configurar e executar o sistema localmente:
 - ✅ **Testes** - Como executar testes
 - ✅ **Checklist** - Verificação de primeira execução
 
+### 📖 GUIA_DEPLOY_GRATUITO.md
+
+**Deploy TOTALMENTE GRATUITO**
+
+Guia para hospedar o sistema sem custos:
+
+- ✅ **Netlify** - Frontend React (gratuito)
+- ✅ **Render** - Backend Java (gratuito)
+- ✅ **Configuração automática** - Deploy no push
+- ✅ **SSL gratuito** - HTTPS automático
+- ✅ **Domínio personalizado** - Suportado
+- ✅ **Monitoramento** - Logs e métricas
+
+### 📖 GUIA_DEPLOY.md
+
+**Deploy com opções pagas**
+
+Guia para deploy com mais recursos:
+
+- ✅ **Vercel** - Frontend React
+- ✅ **Railway** - Backend Java
+- ✅ **PostgreSQL** - Banco de dados
+- ✅ **CI/CD** - GitHub Actions
+- ✅ **Monitoramento avançado**
+
 ### 📖 GUIA_PERSISTENCIA.md
 
 **Detalhes sobre banco de dados e segurança**
@@ -33,6 +74,18 @@ Este guia explica as estratégias de persistência implementadas:
 - ✅ **Migração** - Para PostgreSQL, MySQL, MongoDB
 - ✅ **Backup** - Estratégias de backup
 - ✅ **Monitoramento** - Estatísticas do sistema
+
+### 📖 FLUXOGRAMA_OO.md
+
+**Fluxograma da estrutura orientada a objetos**
+
+Documento visual da arquitetura OO:
+
+- ✅ **Diagrama de classes** - Hierarquia completa
+- ✅ **Fluxo de execução** - Como o sistema funciona
+- ✅ **Padrões de design** - Singleton, Template Method, Strategy
+- ✅ **Relacionamentos** - Herança, composição, agregação
+- ✅ **Princípios OO** - Encapsulamento, herança, polimorfismo
 
 ### 📖 INSTRUCOES_EXECUCAO.md
 
@@ -56,6 +109,22 @@ Guia detalhado do frontend:
 - ✅ **Estrutura** - Componentes e páginas
 
 ## 🚀 Scripts de Automação
+
+### **🆓 Deploy Gratuito (Netlify + Render)**
+
+```bash
+# Executar script de deploy gratuito
+chmod +x docs/deploy-gratuito.sh
+./docs/deploy-gratuito.sh
+```
+
+**Funcionalidades:**
+
+- ✅ Build automático do backend e frontend
+- ✅ Commit e push para GitHub
+- ✅ Instruções para Netlify e Render
+- ✅ Configuração de variáveis de ambiente
+- ✅ URLs finais gratuitas
 
 ### **Windows (PowerShell)**
 
@@ -118,6 +187,26 @@ mvn exec:java -Pprod   # Produção
 ```
 
 ## 🎯 Início Rápido
+
+### **Para Deploy Gratuito**
+
+1. **Clone o repositório**
+
+   ```bash
+   git clone <url-do-repositorio>
+   cd ProjetoMC322
+   ```
+
+2. **Execute o script de deploy gratuito**
+
+   ```bash
+   chmod +x docs/deploy-gratuito.sh
+   ./docs/deploy-gratuito.sh
+   ```
+
+3. **Siga as instruções para Netlify e Render**
+   - Frontend: https://netlify.com
+   - Backend: https://render.com
 
 ### **Para Desenvolvedores**
 
@@ -252,6 +341,9 @@ mvn exec:java  # Será recriado automaticamente
 # Iniciar tudo
 ./docs/start-system.sh
 
+# Deploy gratuito
+./docs/deploy-gratuito.sh
+
 # Parar tudo
 pkill -f "npm start" && pkill -f "mvn exec:java"
 
@@ -275,9 +367,10 @@ cp backend/locacao_imoveis.db backup_$(date +%Y%m%d).db
 Em caso de problemas:
 
 1. **Consulte o [GUIA_DESENVOLVEDOR.md](GUIA_DESENVOLVEDOR.md)**
-2. **Verifique os logs de erro**
-3. **Use os scripts de automação**
-4. **Consulte a seção de solução de problemas**
+2. **Para deploy gratuito**: [GUIA_DEPLOY_GRATUITO.md](GUIA_DEPLOY_GRATUITO.md)
+3. **Verifique os logs de erro**
+4. **Use os scripts de automação**
+5. **Consulte a seção de solução de problemas**
 
 ---
 

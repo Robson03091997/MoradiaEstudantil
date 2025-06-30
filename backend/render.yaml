@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: sistema-locacao-backend
+    env: java
+    plan: free
+    buildCommand: mvn clean package -DskipTests
+    startCommand: java -jar target/sistema-locacao-imoveis-1.0.0.jar
+    envVars:
+      - key: JAVA_VERSION
+        value: 11
+      - key: PORT
+        value: 8080
+      - key: SPRING_PROFILES_ACTIVE
+        value: production
+    healthCheckPath: /api/health
+    autoDeploy: true
