@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaHome, FaEnvelope, FaPhone, FaMapMarkerAlt, FaBed } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -10,8 +10,8 @@ const Footer = () => {
           {/* Logo e Descrição */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 text-xl font-bold text-blue-400 mb-4">
-              <FaHome />
-              <span>ImóveisPro</span>
+              <FaBed />
+              <span>Quarto Certo</span>
             </div>
             <p className="text-gray-300 mb-4">
               Encontre o lugar perfeito para morar. O melhor sistema de locação de imóveis 
@@ -127,7 +127,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2024 ImóveisPro. Todos os direitos reservados.
+            © 2024 Quarto Certo. Todos os direitos reservados.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <button 

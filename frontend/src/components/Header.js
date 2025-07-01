@@ -10,7 +10,8 @@ import {
   FaBuilding, 
   FaChartBar, 
   FaPlus, 
-  FaChevronDown
+  FaChevronDown,
+  FaBed
 } from 'react-icons/fa';
 
 const Header = () => {
@@ -79,8 +80,10 @@ const Header = () => {
           {/* Logo Section */}
           <div className="header-logo">
             <Link to="/" className="logo-link">
-              <div className="logo-icon">🏠</div>
-              <span className="logo-text">ImóveisMC322</span>
+              <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <FaBed style={{ color: '#2563eb', fontSize: 28 }} />
+                <span style={{ fontWeight: 700, fontSize: 22, color: '#2563eb', letterSpacing: 1 }}>Quarto Certo</span>
+              </div>
             </Link>
           </div>
 
