@@ -119,57 +119,94 @@ const Header = () => {
           {/* User Menu Section */}
           <div className="header-user">
             {user ? (
-              <div className="user-menu" ref={userDropdownRef}>
+              <div className="user-menu" ref={userDropdownRef} style={{ position: 'relative' }}>
                 <button
                   onClick={toggleUserDropdown}
                   className="user-menu-button"
                   aria-label="Menu do usuário"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: 0,
+                  }}
                 >
-                  <div className="user-avatar">
+                  <div style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    background: '#e0e7ef',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: 22,
+                    color: '#2563eb',
+                    boxShadow: '0 1px 4px rgba(0,0,0,0.07)'
+                  }}>
                     <FaUser />
                   </div>
-                  <span className="user-name">{user.nome}</span>
-                  <FaChevronDown className={`dropdown-arrow ${isUserDropdownOpen ? 'rotated' : ''}`} />
+                  <span style={{ fontWeight: 500, color: '#222', fontSize: 16 }}>{user.nome}</span>
+                  <FaChevronDown className={`dropdown-arrow ${isUserDropdownOpen ? 'rotated' : ''}`} style={{ color: '#2563eb' }} />
                 </button>
-                
                 {isUserDropdownOpen && (
-                  <div className="user-dropdown">
-                    <div className="dropdown-header">
-                      <div className="dropdown-user-info">
-                        <div className="dropdown-avatar">
+                  <div className="user-dropdown" style={{
+                    position: 'absolute',
+                    top: '110%',
+                    right: 0,
+                    minWidth: 240,
+                    background: '#fff',
+                    borderRadius: 12,
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+                    padding: 16,
+                    zIndex: 100,
+                  }}>
+                    <div className="dropdown-header" style={{ borderBottom: '1px solid #f0f0f0', paddingBottom: 12, marginBottom: 12 }}>
+                      <div className="dropdown-user-info" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                        <div style={{
+                          width: 48,
+                          height: 48,
+                          borderRadius: '50%',
+                          background: '#e0e7ef',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: 26,
+                          color: '#2563eb',
+                        }}>
                           <FaUser />
                         </div>
                         <div>
-                          <div className="dropdown-name">{user.nome}</div>
-                          <div className="dropdown-email">{user.email}</div>
+                          <div style={{ fontWeight: 600, fontSize: 16, color: '#222' }}>{user.nome}</div>
+                          <div style={{ fontSize: 13, color: '#666' }}>{user.email}</div>
                         </div>
                       </div>
                     </div>
-                    
-                    <div className="dropdown-links">
-                      <Link to="/dashboard" className="dropdown-link">
-                        <FaChartBar />
+                    <div className="dropdown-links" style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      <Link to="/dashboard" className="dropdown-link" style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#222', textDecoration: 'none', padding: '8px 0', borderRadius: 6, transition: 'background 0.2s' }}>
+                        <FaChartBar style={{ color: '#2563eb' }} />
                         <span>Dashboard</span>
                       </Link>
-                      <Link to="/my-properties" className="dropdown-link">
-                        <FaBuilding />
+                      <Link to="/my-properties" className="dropdown-link" style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#222', textDecoration: 'none', padding: '8px 0', borderRadius: 6, transition: 'background 0.2s' }}>
+                        <FaBuilding style={{ color: '#2563eb' }} />
                         <span>Meus Imóveis</span>
                       </Link>
-                      <Link to="/add-property" className="dropdown-link">
-                        <FaPlus />
+                      <Link to="/add-property" className="dropdown-link" style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#222', textDecoration: 'none', padding: '8px 0', borderRadius: 6, transition: 'background 0.2s' }}>
+                        <FaPlus style={{ color: '#2563eb' }} />
                         <span>Anunciar</span>
                       </Link>
-                      <Link to="/statistics" className="dropdown-link">
-                        <FaChartBar />
+                      <Link to="/statistics" className="dropdown-link" style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#222', textDecoration: 'none', padding: '8px 0', borderRadius: 6, transition: 'background 0.2s' }}>
+                        <FaChartBar style={{ color: '#2563eb' }} />
                         <span>Estatísticas</span>
                       </Link>
                     </div>
-                    
-                    <div className="dropdown-divider"></div>
-                    
+                    <div className="dropdown-divider" style={{ borderTop: '1px solid #f0f0f0', margin: '12px 0' }}></div>
                     <button
                       onClick={handleLogout}
                       className="dropdown-link dropdown-logout"
+                      style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#e11d48', background: 'none', border: 'none', padding: '8px 0', borderRadius: 6, cursor: 'pointer', fontWeight: 500 }}
                     >
                       <FaSignOutAlt />
                       <span>Sair</span>
