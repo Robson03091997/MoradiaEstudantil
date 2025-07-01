@@ -138,9 +138,12 @@ const Login = () => {
             </div>
 
             <div className="text-sm">
-              <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+              <button 
+                onClick={() => alert('Funcionalidade de recuperação de senha - Em desenvolvimento')}
+                className="font-medium text-blue-600 hover:text-blue-500"
+              >
                 Esqueceu sua senha?
-              </a>
+              </button>
             </div>
           </div>
 

@@ -272,13 +272,21 @@ const Register = () => {
             />
             <label htmlFor="terms" className="ml-2 block text-sm text-gray-900">
               Eu concordo com os{' '}
-              <a href="#" className="text-blue-600 hover:text-blue-500">
+              <button 
+                type="button"
+                onClick={() => alert('Termos de Uso - Em desenvolvimento')}
+                className="text-blue-600 hover:text-blue-500"
+              >
                 Termos de Uso
-              </a>{' '}
+              </button>{' '}
               e{' '}
-              <a href="#" className="text-blue-600 hover:text-blue-500">
+              <button 
+                type="button"
+                onClick={() => alert('Política de Privacidade - Em desenvolvimento')}
+                className="text-blue-600 hover:text-blue-500"
+              >
                 Política de Privacidade
-              </a>
+              </button>
             </label>
           </div>
 

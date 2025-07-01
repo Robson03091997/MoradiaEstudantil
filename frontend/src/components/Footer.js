@@ -18,15 +18,27 @@ const Footer = () => {
               com opções para todos os tipos de moradia.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <button 
+                onClick={() => window.open('mailto:contato@imoveispro.com')}
+                className="text-gray-400 hover:text-blue-400 transition-colors"
+                aria-label="Enviar email"
+              >
                 <FaEnvelope size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              </button>
+              <button 
+                onClick={() => window.open('tel:+5511999999999')}
+                className="text-gray-400 hover:text-blue-400 transition-colors"
+                aria-label="Ligar"
+              >
                 <FaPhone size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              </button>
+              <button 
+                onClick={() => window.open('https://maps.google.com/?q=São+Paulo,SP')}
+                className="text-gray-400 hover:text-blue-400 transition-colors"
+                aria-label="Ver localização"
+              >
                 <FaMapMarkerAlt size={20} />
-              </a>
+              </button>
             </div>
           </div>
 
@@ -118,15 +130,24 @@ const Footer = () => {
             © 2024 ImóveisPro. Todos os direitos reservados.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
+            <button 
+              onClick={() => alert('Política de Privacidade - Em desenvolvimento')}
+              className="text-gray-400 hover:text-blue-400 text-sm transition-colors"
+            >
               Política de Privacidade
-            </a>
-            <a href="#" className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
+            </button>
+            <button 
+              onClick={() => alert('Termos de Uso - Em desenvolvimento')}
+              className="text-gray-400 hover:text-blue-400 text-sm transition-colors"
+            >
               Termos de Uso
-            </a>
-            <a href="#" className="text-gray-400 hover:text-blue-400 text-sm transition-colors">
+            </button>
+            <button 
+              onClick={() => window.open('mailto:suporte@imoveispro.com')}
+              className="text-gray-400 hover:text-blue-400 text-sm transition-colors"
+            >
               Suporte
-            </a>
+            </button>
           </div>
         </div>
       </div>
